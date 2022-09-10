@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:movies_app/home/Search/Search_screen.dart';
 import 'package:movies_app/home/browse/Browse_screen.dart';
 import 'package:movies_app/home/main_screen/mainScreen.dart';
@@ -18,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF121312),
       body: tabs[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Color(0xFFFFBB3B),
@@ -31,8 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
             selectedIndex=index;
           });
         },
-        items: [
-
+        items: const [
           BottomNavigationBarItem(
               backgroundColor: Color(0xFF1A1A1A),
               icon: Icon(Icons.home),
