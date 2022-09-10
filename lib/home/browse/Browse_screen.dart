@@ -15,6 +15,7 @@ class BrowseScreen extends StatelessWidget {
     GridElement(movieCategory: 'action6', imgPath: 'assets/images/img_bg1.jpg'),
     GridElement(movieCategory: 'action6', imgPath: 'assets/images/img_bg1.jpg'),
     GridElement(movieCategory: 'action6', imgPath: 'assets/images/img_bg1.jpg'),
+    GridElement(movieCategory: 'action6', imgPath: 'assets/images/img_bg1.jpg'),
   ];
 
   /*===============================================*/
