@@ -42,7 +42,7 @@ class DetailsScreen extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    bottom: 10,
+                    bottom: 0,
                     child: Text(
                       'Drop and the lost city of gold',
                       style: Theme.of(context)
@@ -54,7 +54,7 @@ class DetailsScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(child: MoreDetailsMovies()),
+            MoreDetailsMovies(),
             Expanded(
                 child: Container(
               padding: EdgeInsets.all(15),
@@ -62,9 +62,9 @@ class DetailsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text(
+                  const Text(
                     'More Like This',
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
