@@ -69,6 +69,9 @@ class DetailsScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
+                  SizedBox(
+                    height: 15,
+                  ),
                   Expanded(
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
