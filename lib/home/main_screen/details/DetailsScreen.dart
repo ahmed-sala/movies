@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/home/main_screen/details/MoreDetailsMovies.dart';
-import 'package:movies_app/home/main_screen/details/moreMovies.dart';
 
 class DetailsScreen extends StatelessWidget {
-  static const String routeName = 'DetailsScreen';
+  static const String routeName = 'test';
 
   @override
   Widget build(BuildContext context) {
@@ -20,74 +18,161 @@ class DetailsScreen extends StatelessWidget {
               ?.copyWith(color: Color(0xFFFFFFFF)),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: Stack(
-                children: [
-                  Image.asset(
-                    'assets/images/Main_Film.png',
-                    height: 217,
-                    width: double.infinity,
-                  ),
-                  Positioned(
-                    left: size.width * 0.41,
-                    top: 79,
-                    child: Icon(
-                      Icons.play_circle,
-                      size: 50,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    child: Text(
-                      'Drop and the lost city of gold',
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium
-                          ?.copyWith(color: Color(0xFFFFFFFF)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            MoreDetailsMovies(),
-            Expanded(
-                child: Container(
-              padding: EdgeInsets.all(15),
-              color: Color(0xFF282A28),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const Text(
-                    'More Like This',
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Expanded(
-                    child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (_, index) {
-                        return MoreMovies();
-                      },
-                      itemCount: 5,
-                      separatorBuilder: (_, index) => SizedBox(
-                        width: 5,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                child: Stack(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: size.height * 0.22,
+                      child: Stack(
+                        children: [
+                          Image.asset(
+                            'assets/images/Main_Film.png',
+                            height: size.height * 0.29,
+                            width: double.infinity,
+                            fit: BoxFit.fitWidth,
+                          ),
+                          Positioned(
+                            left: size.width * 0.40,
+                            top: size.height * 0.08,
+                            child: Icon(
+                              Icons.play_circle_filled,
+                              size: 70,
+                              color: Colors.white,
+                            ),
+                          )
+                        ],
                       ),
                     ),
-                  )
+                  ],
+                ),
+              ),
+              Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 20),
+                      Text(
+                        'Drop and the lost city of gold',
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(color: Color(0xFFFFFFFF)),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        textAlign: TextAlign.start,
+                        '2019  PG-13 2h 7m',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                      // PopularItem(movies),
+                    ],
+                  ),
                 ],
               ),
-            )),
-          ],
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 190,
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    child: Container(
+                      width: 130,
+                      height: 300,
+                      child: Stack(
+                        children: [
+                          InkWell(
+                              onTap: () {},
+                              child: Image.asset(
+                                'assets/images/doraFilm.png',
+                                width: 130,
+                                height: 200,
+                              )),
+                        ],
+                      ),
+                    ),
+                    // PopularItem(movies),
+                  ),
+                  Flexible(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.grey),
+                          ),
+                          child: const Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: Text(
+                              'Action',
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 18),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Having spent most of her life exploring the jungle'
+                            ', nothing could prepare Dora for her most '
+                            'dangerous adventure yet high school.',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(fontSize: 14),
+                            textDirection: TextDirection.ltr,
+                            overflow: TextOverflow.visible,
+                            maxLines: 2,
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.star,
+                              color: Colors.yellow,
+                              size: 20,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              '7.7',
+                              style: Theme.of(context).textTheme.titleMedium,
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                'More Like This',
+                style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+            ],
+          ),
         ),
       ),
     );
