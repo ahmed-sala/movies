@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/home/Search/Search_screen.dart';
-import 'package:movies_app/home/browse/Browse_screen.dart';
-import 'package:movies_app/home/main_screen/mainScreen.dart';
-import 'package:movies_app/home/watch_list/watchList_screen.dart';
+import 'package:movies_app/presentation_layer/Search/Search_screen.dart';
+import 'package:movies_app/presentation_layer/browse/Browse_screen.dart';
+import 'package:movies_app/presentation_layer/main_screen/mainScreen.dart';
+import 'package:movies_app/presentation_layer/watch_list/watchList_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home';
@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int selectedIndex=0;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
