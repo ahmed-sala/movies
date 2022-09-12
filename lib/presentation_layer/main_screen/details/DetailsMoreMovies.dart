@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/data_layer/model/Movies.dart';
 import 'package:movies_app/data_layer/model/RecomendedMovies.dart';
 import 'package:movies_app/data_layer/services/api_manager.dart';
 import 'package:movies_app/presentation_layer/main_screen/details/moreMovies.dart';
 
-class DetailsScreen extends StatelessWidget {
-  Results? results;
+class DetailsMoreMovies extends StatelessWidget {
+  MoreMoviesResults? results;
 
-  DetailsScreen(this.results);
+  DetailsMoreMovies(this.results);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,7 @@ class DetailsScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.0,
         title: Text(
-          results!.title ?? '',
+          results!.originalTitle ?? '',
           style: Theme.of(context)
               .textTheme
               .titleMedium
@@ -39,7 +38,7 @@ class DetailsScreen extends StatelessWidget {
                         children: [
                           Image.network(
                             'https://image.tmdb.org/t/p/w500' +
-                                '${results!.posterPath}',
+                                '${results!.backdropPath}',
                             height: size.height * 0.29,
                             width: double.infinity,
                             fit: BoxFit.fitWidth,
@@ -151,13 +150,6 @@ class DetailsScreen extends StatelessWidget {
                               color: Colors.yellow,
                               size: 20,
                             ),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              results!.voteAverage ?? '',
-                              style: Theme.of(context).textTheme.titleMedium,
-                            )
                           ],
                         ),
                       ],

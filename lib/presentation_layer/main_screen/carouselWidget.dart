@@ -42,11 +42,15 @@ class CarouseWidget extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
+                        // Navigator.pushNamed(context, DetailsScreen.routeName,
+                        //     arguments: results);
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => DetailsScreen(),
-                          ),
+                          MaterialPageRoute(builder: (_) {
+                            return DetailsScreen(
+                              results!,
+                            );
+                          }),
                         );
                       },
                       child: Image.network(

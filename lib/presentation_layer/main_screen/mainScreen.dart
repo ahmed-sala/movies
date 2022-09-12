@@ -74,18 +74,7 @@ class MainScreen extends StatelessWidget {
                   const SizedBox(
                     height: 12,
                   ),
-                  Expanded(
-                    child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (_, index) {
-                        return NewRealizeWidget();
-                      },
-                      itemCount: 5,
-                      separatorBuilder: (_, index) => const SizedBox(
-                        width: 5,
-                      ),
-                    ),
-                  )
+                  Expanded(child: NewRealizeWidget())
                 ],
               ),
             ),
