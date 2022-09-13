@@ -74,7 +74,7 @@ class _CarouseWidgetState extends State<CarouseWidget> {
                               left: size.width * 0.01,
                               child: InkWell(
                                   onTap: () {
-                                    addMarked();
+                                     addMarked();
                                     setState(() {
                                       isMarked = !isMarked;
                                     });

@@ -24,7 +24,8 @@ class WatchListScreen extends StatelessWidget {
           var data = snapshot.data?.docs.map((e) => e.data()).toList();
           return ListView.builder(
             itemBuilder: (buldContext, index) {
-              return WatchlistWidget(data![index]);
+              return
+                WatchlistWidget(data![index]);
             },
             itemCount: data!.length,
           );
