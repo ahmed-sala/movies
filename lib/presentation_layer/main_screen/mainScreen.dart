@@ -4,7 +4,7 @@ import 'package:movies_app/data_layer/model/Movies.dart';
 import 'package:movies_app/data_layer/services/api_manager.dart';
 import 'package:movies_app/presentation_layer/main_screen/carouselWidget.dart';
 import 'package:movies_app/presentation_layer/main_screen/new_realize_widget.dart';
-import 'package:movies_app/presentation_layer/main_screen/recomended_widget.dart';
+import 'package:movies_app/presentation_layer/main_screen/realizeItem.dart';
 
 class MainScreen extends StatelessWidget {
   @override
@@ -35,9 +35,6 @@ class MainScreen extends StatelessWidget {
                         );
                       }
                       var data = snapshot.data;
-                      // if (data?.status_code != 200) {
-                      //   return Center(child: Text('${data?.status_message}'));
-                      // }
                       List<Results>? movies = data!.results;
                       return CarouselSlider(
                         items: movies!.map((element) {
@@ -74,7 +71,41 @@ class MainScreen extends StatelessWidget {
                   const SizedBox(
                     height: 12,
                   ),
-                  Expanded(child: NewRealizeWidget())
+                  Expanded(
+                    child: FutureBuilder<Movies>(
+                        future: ApiManager.getMoviesDetails(),
+                        builder: (buildContext, snapshot) {
+                          if (snapshot.hasError) {
+                            print('error = ${snapshot.error.toString()}');
+                            return Container(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 100),
+                                alignment: AlignmentDirectional.center,
+                                child: Text(
+                                  '${snapshot.error.toString()}',
+                                  style: const TextStyle(color: Colors.white),
+                                ));
+                          } else if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                              child: const CircularProgressIndicator(),
+                            );
+                          }
+                          var data = snapshot.data;
+
+                          List<Results>? movies = data!.results;
+                          return ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (_, index) {
+                              return RealizeItem(movies![index]);
+                            },
+                            itemCount: movies!.length,
+                            separatorBuilder: (_, index) => const SizedBox(
+                              width: 5,
+                            ),
+                          );
+                        }),
+                  )
                 ],
               ),
             ),
@@ -98,18 +129,19 @@ class MainScreen extends StatelessWidget {
                   const SizedBox(
                     height: 12,
                   ),
-                  Expanded(
-                    child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (_, index) {
-                        return RecomendedWidget();
-                      },
-                      itemCount: 5,
-                      separatorBuilder: (_, index) => const SizedBox(
-                        width: 5,
-                      ),
-                    ),
-                  )
+                  Expanded(child: NewRealizeWidget())
+                  // Expanded(
+                  //   child: ListView.separated(
+                  //     scrollDirection: Axis.horizontal,
+                  //     itemBuilder: (_, index) {
+                  //       return RecomendedWidget();
+                  //     },
+                  //     itemCount: 5,
+                  //     separatorBuilder: (_, index) => const SizedBox(
+                  //       width: 5,
+                  //     ),
+                  //   ),
+                  // )
                 ],
               ),
             ),

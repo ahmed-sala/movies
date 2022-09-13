@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/data_layer/model/Movies.dart';
 import 'package:movies_app/data_layer/model/RecomendedMovies.dart';
 import 'package:movies_app/presentation_layer/main_screen/realizeItem.dart';
 
@@ -26,13 +27,13 @@ class NewRealizeWidget extends StatelessWidget {
           }
           var data = snapshot.data;
 
-          List<MoreMoviesResults>? movies = data!.results;
+          List<Results>? movies = data!.results;
           return ListView.separated(
             scrollDirection: Axis.horizontal,
             itemBuilder: (_, index) {
               return RealizeItem(movies![index]);
             },
-            itemCount: 5,
+            itemCount: movies!.length,
             separatorBuilder: (_, index) => const SizedBox(
               width: 5,
             ),

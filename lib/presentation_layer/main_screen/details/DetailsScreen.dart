@@ -196,7 +196,7 @@ class DetailsScreen extends StatelessWidget {
                       );
                     }
                     var data = snapshot.data;
-                    List<MoreMoviesResults>? movies = data!.results;
+                    List<Results>? movies = data!.results;
                     return Container(
                       width: double.infinity,
                       height: 200,
