@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/data_layer/database/data_model.dart';
 import 'package:movies_app/data_layer/database/myDatabase.dart';
-import 'package:movies_app/data_layer/database/watchList_add.dart';
 import 'package:movies_app/data_layer/model/Movies.dart';
 import 'package:movies_app/presentation_layer/main_screen/details/DetailsScreen.dart';
 import 'package:movies_app/showLoadingUtils.dart';
@@ -57,9 +57,7 @@ class _CarouseWidgetState extends State<CarouseWidget> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (_) {
-                            return DetailsScreen(
-                              results!,
-                            );
+                            return DetailsScreen(widget.results!);
                           }),
                         );
                       },
@@ -120,10 +118,12 @@ class _CarouseWidgetState extends State<CarouseWidget> {
 
   void addMarked() {
     WatchAdd watch = WatchAdd(
-        time: widget.results?.releaseDate,
-        title: widget.results?.title,
-        average: widget.results?.voteAverage,
-        imageUel: widget.results?.posterPath);
+      time: widget.results?.releaseDate,
+      title: widget.results?.title,
+      average: widget.results?.voteAverage,
+      imageUel:
+          'https://image.tmdb.org/t/p/w500' + '${widget.results!.posterPath}',
+    );
     showLoading(context, 'Loading');
     MyDataBase.insertWatch(watch).then((value) {
       hideLoading(context);

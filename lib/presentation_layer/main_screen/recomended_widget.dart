@@ -29,7 +29,4 @@ class _RecomendedWidgetState extends State<RecomendedWidget> {
     );
   }
 
-  List<String>boockMark=[
-
-  ];
 }
