@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/data_layer/model/Movies.dart';
 import 'package:movies_app/data_layer/model/RecomendedMovies.dart';
 import 'package:movies_app/data_layer/services/api_manager.dart';
 import 'package:movies_app/presentation_layer/main_screen/details/moreMovies.dart';
 
 class DetailsMoreMovies extends StatelessWidget {
-  MoreMoviesResults? results;
+  Results? results;
 
   DetailsMoreMovies(this.results);
 
@@ -15,7 +16,7 @@ class DetailsMoreMovies extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.0,
         title: Text(
-          results!.originalTitle ?? '',
+          results!.title ?? '',
           style: Theme.of(context)
               .textTheme
               .titleMedium
@@ -188,7 +189,7 @@ class DetailsMoreMovies extends StatelessWidget {
                       );
                     }
                     var data = snapshot.data;
-                    List<MoreMoviesResults>? movies = data!.results;
+                    List<Results>? movies = data!.results;
                     return Container(
                       width: double.infinity,
                       height: 200,

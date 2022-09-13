@@ -15,10 +15,11 @@ class _WatchlistWidgetState extends State<WatchlistWidget> {
       child: Row(
         children: [
           Expanded(
-            child: Image.asset(
+            child: Image.network(
               'https://image.tmdb.org/t/p/w500' + '${widget.watchs.imageUel}',
               width: 140,
               height: 89,
+              fit: BoxFit.cover,
             ),
           ),
           const SizedBox(

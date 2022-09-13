@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/data_layer/model/RecomendedMovies.dart';
+import 'package:movies_app/data_layer/model/Movies.dart';
 import 'package:movies_app/presentation_layer/main_screen/details/DetailsMoreMovies.dart';
 
 class RealizeItem extends StatefulWidget {
-  MoreMoviesResults? results;
+  Results? results;
 
   RealizeItem(this.results);
 
