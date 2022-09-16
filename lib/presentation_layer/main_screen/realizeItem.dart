@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/data_layer/database/data_model.dart';
+import 'package:movies_app/data_layer/database/myDatabase.dart';
+import 'package:movies_app/data_layer/model/Movies.dart';
 import 'package:movies_app/presentation_layer/main_screen/details/DetailsMoreMovies.dart';
 import 'package:movies_app/showLoadingUtils.dart';
 
@@ -66,7 +69,7 @@ class _RealizeItemState extends State<RealizeItem> {
     showLoading(context, 'Loading');
     MyDataBase.insertWatch(watch).then((value) {
       hideLoading(context);
-      showMassege(
+      showMessage(
         context,
         'Added successfully',
         posActionName: 'Ok',
@@ -75,7 +78,7 @@ class _RealizeItemState extends State<RealizeItem> {
       //called when future fail
       hideLoading(context);
 
-      showMassege(
+      showMessage(
         context,
         'Something went wrong, try again later',
         posActionName: 'Ok',
@@ -84,30 +87,12 @@ class _RealizeItemState extends State<RealizeItem> {
       hideLoading(context);
 
       //save change in cache
-      showMassege(
+      showMessage(
         context,
         'Film saved locally',
         posActionName: 'Ok',
       );
     });
   }
-  void showLoading(BuildContext context, String loadingMassege,
-      {bool isCancelable = true}) {
-    showDialog(
-        context: context,
-        builder: (buildContext) {
-          return AlertDialog(
-            content: Row(
-              children: [
-                CircularProgressIndicator(),
-                SizedBox(
-                  width: 12,
-                ),
-                Text(loadingMassege),
-              ],
-            ),
-          );
-        },
-        barrierDismissible: isCancelable);
-  }
+
 }

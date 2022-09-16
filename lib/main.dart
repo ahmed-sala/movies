@@ -6,6 +6,7 @@ import 'package:movies_app/presentation_layer/my_theme.dart';
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

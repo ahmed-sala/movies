@@ -84,16 +84,16 @@ class _WatchlistWidgetState extends State<WatchlistWidget> {
                 child: InkWell(
                   onTap: (){
                     MyDataBase.deleteWatch(widget.watchs).then((value) {
-                      showMassege(context, 'Film deleted successfully',
+                      showMessage(context, 'Film deleted successfully',
                           posActionName: 'Ok');
                     }).onError((error, stackTrace) {
-                      showMassege(
+                      showMessage(
                           context,
                           'Something went wrong,'
                               'Please try again later',
                           posActionName: 'Ok');
                     }).timeout(Duration(seconds: 5), onTimeout: () {
-                      showMassege(context, 'Data delete locally',
+                      showMessage(context, 'Data delete locally',
                           posActionName: 'Ok');
                     });
                   },

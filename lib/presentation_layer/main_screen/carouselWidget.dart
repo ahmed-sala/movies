@@ -127,7 +127,7 @@ class _CarouseWidgetState extends State<CarouseWidget> {
     showLoading(context, 'Loading');
     MyDataBase.insertWatch(watch).then((value) {
       hideLoading(context);
-      showMassege(
+      showMessage(
         context,
         'Added successfully',
         posActionName: 'Ok',
@@ -136,7 +136,7 @@ class _CarouseWidgetState extends State<CarouseWidget> {
       //called when future fail
       hideLoading(context);
 
-      showMassege(
+      showMessage(
         context,
         'Something went wrong, try again later',
         posActionName: 'Ok',
@@ -145,7 +145,7 @@ class _CarouseWidgetState extends State<CarouseWidget> {
       hideLoading(context);
 
       //save change in cache
-      showMassege(
+      showMessage(
         context,
         'Film saved locally',
         posActionName: 'Ok',
@@ -153,23 +153,5 @@ class _CarouseWidgetState extends State<CarouseWidget> {
     });
   }
 
-  void showLoading(BuildContext context, String loadingMassege,
-      {bool isCancelable = true}) {
-    showDialog(
-        context: context,
-        builder: (buildContext) {
-          return AlertDialog(
-            content: Row(
-              children: [
-                CircularProgressIndicator(),
-                SizedBox(
-                  width: 12,
-                ),
-                Text(loadingMassege),
-              ],
-            ),
-          );
-        },
-        barrierDismissible: isCancelable);
-  }
+
 }

@@ -1,62 +1,62 @@
 import 'package:flutter/material.dart';
 
-void showMassege(BuildContext context, String massege,
+void showMessage(BuildContext context, String message,
     {String? posActionName,
-      VoidCallback? posAction,
+      VoidCallback? posActionCallBack,
       String? negActionName,
-      VoidCallback? negAction,
-      bool isCancelable = true}) {
-  List<Widget> actions = [];
-  if (posActionName != null) {
-    actions.add(TextButton(
-      onPressed: () {
-        Navigator.pop(context);
-        if (posAction != null) {
-          posAction();
-        }
-      },
-      child: Text(posActionName),
-    ));
-  }
-  if (negAction != null) {
-    actions.add(TextButton(
-      onPressed: () {
-        Navigator.pop(context);
-        if (negAction != null) {
-          negAction();
-        }
-      },
-      child: Text(negActionName!),
-    ));
-  }
+      VoidCallback? negActionCallback}) {
   showDialog(
       context: context,
       builder: (buildContext) {
+        List<Widget> actions = [];
+        if (posActionName != null) {
+          actions.add(TextButton(
+              onPressed: () {
+                Navigator.pop(buildContext);
+                if (posActionCallBack != null) posActionCallBack();
+              },
+              child: Text(posActionName)));
+        }
+        if (negActionName != null) {
+          actions.add(TextButton(
+              onPressed: () {
+                Navigator.pop(buildContext);
+                if (negActionCallback != null) negActionCallback();
+              },
+              child: Text(negActionName)));
+        }
         return AlertDialog(
-          content: Text(
-            massege,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
           actions: actions,
-        );
-      },barrierDismissible: isCancelable);
-   showLoading (BuildContext context, String loadingMassege,
-      {bool isCancelable = true}) => showDialog(
-      context: context,
-      builder: (buildContext) {
-        return AlertDialog(
-          content: Row(
-            children: [
-              CircularProgressIndicator(),
-              SizedBox(
-                width: 12,
-              ),
-              Text(loadingMassege),
-            ],
+          content: Container(
+            padding: EdgeInsets.all(12),
+            child: Text(
+              '$message',
+              style: Theme.of(buildContext).textTheme.bodySmall,
+            ),
           ),
         );
-      },barrierDismissible: isCancelable);
+      });
 }
+
+void showLoading(BuildContext context,String message,
+    {bool isCancelable = true}){
+  showDialog(context: context, builder: (builder){
+    return AlertDialog(
+      content: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            CircularProgressIndicator(),
+            SizedBox(width: 12,),
+            Text(message)
+          ],
+        ),
+      ),
+    );
+  },barrierDismissible: isCancelable);
+
+}
+
 void hideLoading(BuildContext context){
   Navigator.pop(context);
 }
