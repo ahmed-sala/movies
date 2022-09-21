@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/data_layer/model/Movies.dart';
 import 'package:movies_app/data_layer/services/api_manager.dart';
 import 'package:movies_app/presentation_layer/main_screen/carouselWidget.dart';
-import 'package:movies_app/presentation_layer/main_screen/new_realize_widget.dart';
-import 'package:movies_app/presentation_layer/main_screen/realizeItem.dart';
+import 'package:movies_app/presentation_layer/main_screen/realize/new_realize_widget.dart';
+import 'package:movies_app/presentation_layer/main_screen/realize/realizeItem.dart';
 
 class MainScreen extends StatelessWidget {
   @override

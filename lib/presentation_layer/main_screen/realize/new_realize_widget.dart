@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/data_layer/model/Movies.dart';
 import 'package:movies_app/data_layer/model/RecomendedMovies.dart';
-import 'package:movies_app/presentation_layer/main_screen/realizeItem.dart';
+import 'package:movies_app/presentation_layer/main_screen/realize/realizeItem.dart';
 
-import '../../data_layer/services/api_manager.dart';
+import '../../../data_layer/services/api_manager.dart';
 
 class NewRealizeWidget extends StatelessWidget {
   @override

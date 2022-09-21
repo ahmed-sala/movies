@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/data_layer/model/Movies.dart';
 import 'package:movies_app/data_layer/model/RecomendedMovies.dart';
 import 'package:movies_app/data_layer/services/api_manager.dart';
-import 'package:movies_app/presentation_layer/main_screen/details/moreMovies.dart';
+import 'package:movies_app/presentation_layer/main_screen/details/more_movies/moreMovies.dart';
 
 class DetailsMoreMovies extends StatelessWidget {
   Results? results;
