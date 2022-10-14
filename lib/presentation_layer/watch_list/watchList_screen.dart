@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/base/base.dart';
-import 'package:movies_app/data_layer/database/data_model.dart';
+import 'package:movies_app/data_layer/model/data_model.dart';
 import 'package:movies_app/data_layer/database/myDatabase.dart';
 import 'package:movies_app/presentation_layer/watch_list/watch_list_viewModel.dart';
 import 'package:movies_app/presentation_layer/watch_list/watch_list_widget.dart';

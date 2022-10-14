@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/presentation_layer/Search/Search_screen.dart';
-import 'package:movies_app/presentation_layer/browse/Browse_screen.dart';
 import 'package:movies_app/presentation_layer/main_screen/mainScreen.dart';
 import 'package:movies_app/presentation_layer/watch_list/watchList_screen.dart';
+
+import 'browse/categories.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home';
@@ -51,5 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  List<Widget>tabs=[MainScreen(),SearchScreen(),BrowseScreen(),WatchListScreen()];
+  List<Widget> tabs = [
+    MainScreen(),
+    SearchScreen(),
+    CategoryFragment(),
+    WatchListScreen()
+  ];
 }

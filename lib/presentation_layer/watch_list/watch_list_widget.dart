@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/data_layer/database/data_model.dart';
+import 'package:movies_app/data_layer/model/data_model.dart';
 import 'package:movies_app/data_layer/database/myDatabase.dart';
 import 'package:movies_app/showLoadingUtils.dart';
 

@@ -1,69 +1,118 @@
 import 'package:flutter/material.dart';
-import 'details.dart';
+import 'package:movies_app/data_layer/services/api_manager.dart';
 
-class SearchScreen extends StatelessWidget {
-  static const String routeName = 'search';
+import '../../data_layer/model/Movies.dart';
+import 'movieSearch.dart';
+
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  TextEditingController textController = TextEditingController();
+  List<Results> result = [];
+  String searchKey = '';
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF121312),
-      body: Container(
-        width:double.infinity,
-        margin: const EdgeInsets.only(top: 43, right: 35, left: 35),
-        child: Column(
-          children: [
-            Container(
-              margin: const EdgeInsets.only(bottom: 15),
-              decoration: BoxDecoration(
-                color: const Color(0x99514F4F),
-                border: Border.all(
-                  color: const Color(0xFFB5B4B4),
+    return SafeArea(
+      child: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 35, vertical: 12),
+            height: 48,
+            child: TextFormField(
+              // controller: textController,
+
+              onChanged: (String? value) {
+                searchKey = value ?? '';
+                setState(() {});
+              },
+              style: const TextStyle(
+                color: Colors.white,
+              ),
+              decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: Colors.grey,
+                    width: 2,
+                  ),
+                  borderRadius: BorderRadius.circular(30),
                 ),
-                borderRadius: BorderRadius.circular(35),
-              ),
-              child: Row(
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const ImageIcon(
-                      AssetImage('assets/images/search@2x.png'),
-                      color: Colors.white,
-                    ),
+                filled: true,
+                fillColor: const Color.fromRGBO(81, 79, 79, 1.0),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: Colors.grey,
+                    width: 2,
                   ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  const Text(
-                    'Search',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                enabled: true,
+                prefixIcon: const Icon(
+                  Icons.search,
+                  color: Colors.white,
+                  size: 24,
+                ),
+                hintText: 'search',
+                hintStyle: const TextStyle(
+                  color: Colors.grey,
+                ),
               ),
             ),
-            Details(
-              'assets/images/img_1.png',
-              'assets/images/img_2.png',
-              'Alita Battel Angel',
-              '2019',
-              'Rosa Salazar,Christoph Waltz',
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.18,
-            ),
-            Image.asset('assets/images/no_movie_found.png',width: 78,height: 87,),
-            const SizedBox(
-              height: 5,
-            ),
-            const Text(
-              'No movies found',
-              style: TextStyle(color: Color(0xFF707070), fontSize: 13),
-            ),
-          ],
-        ),
+          ),
+          searchKey.isNotEmpty
+              ? Expanded(
+                  child: ListView.separated(
+                    itemBuilder: (BuildContext context, index) {
+                      return SearchItem(
+                          loadSearchData().elementAt(index), index);
+                    },
+                    separatorBuilder: (BuildContext context, index) {
+                      return Container(
+                        margin: const EdgeInsets.only(
+                            left: 2, right: 2, top: 18, bottom: 18),
+                        width: double.infinity,
+                        height: 1,
+                        color: const Color.fromRGBO(181, 180, 180, 1.0),
+                      );
+                    },
+                    itemCount: loadSearchData().length,
+                  ),
+                )
+              : Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        Icons.local_movies,
+                        color: Color.fromRGBO(181, 180, 180, 1.0),
+                        size: 150,
+                      ),
+                      Text(
+                        'No movies found',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color.fromRGBO(181, 180, 180, 1.0),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+        ],
       ),
     );
+  }
+
+  List loadSearchData() {
+    ApiManager.getSearch(searchKey).then((value) {
+      result = value.results ?? [];
+    }).onError((error, stackTrace) {
+      print('error => ${error.toString()}');
+    });
+    return result;
   }
 }

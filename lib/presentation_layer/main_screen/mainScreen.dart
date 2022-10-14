@@ -24,9 +24,9 @@ class MainScreen extends StatelessWidget {
                         return Container(
                             padding: const EdgeInsets.symmetric(vertical: 100),
                             alignment: AlignmentDirectional.center,
-                            child: Text(
-                              '${snapshot.error.toString()}',
-                              style: const TextStyle(color: Colors.white),
+                            child: const Text(
+                              'No Internet Found',
+                              style: TextStyle(color: Colors.white),
                             ));
                       } else if (snapshot.connectionState ==
                           ConnectionState.waiting) {
@@ -81,9 +81,9 @@ class MainScreen extends StatelessWidget {
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 100),
                                 alignment: AlignmentDirectional.center,
-                                child: Text(
-                                  '${snapshot.error.toString()}',
-                                  style: const TextStyle(color: Colors.white),
+                                child: const Text(
+                                  'No Internet Found',
+                                  style: TextStyle(color: Colors.white),
                                 ));
                           } else if (snapshot.connectionState ==
                               ConnectionState.waiting) {
@@ -130,18 +130,6 @@ class MainScreen extends StatelessWidget {
                     height: 12,
                   ),
                   Expanded(child: NewRealizeWidget())
-                  // Expanded(
-                  //   child: ListView.separated(
-                  //     scrollDirection: Axis.horizontal,
-                  //     itemBuilder: (_, index) {
-                  //       return RecomendedWidget();
-                  //     },
-                  //     itemCount: 5,
-                  //     separatorBuilder: (_, index) => const SizedBox(
-                  //       width: 5,
-                  //     ),
-                  //   ),
-                  // )
                 ],
               ),
             ),

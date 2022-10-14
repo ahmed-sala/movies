@@ -13,18 +13,25 @@ class _RecomendedWidgetState extends State<RecomendedWidget> {
     Size size=MediaQuery.of(context).size;
     return Stack(
       children: [
-        Image.asset('assets/images/doraFilm.png',width: 97,height: 128,),
+        Image.asset(
+          'assets/images/doraFilm.png',
+          width: 97,
+          height: 128,
+        ),
         Positioned(
-            left: size.width*0.02,
+            left: size.width * 0.02,
             child: InkWell(
-                onTap: (){
-
-                  setState((){
-                    isMarked=!isMarked;
+                onTap: () {
+                  setState(() {
+                    isMarked = !isMarked;
                   });
                 },
-                child: Image.asset(isMarked?'assets/images/bookmark_marked.png':'assets/images/bookmark.png',width: 20,))),
-
+                child: Image.asset(
+                  isMarked
+                      ? 'assets/images/bookmark_marked.png'
+                      : 'assets/images/bookmark.png',
+                  width: 20,
+                ))),
       ],
     );
   }
